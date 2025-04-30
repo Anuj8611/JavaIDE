@@ -1,0 +1,13 @@
+C:\Users\agaur\source\repos\javaide\javaide\bin\Debug\javaide.exe.config
+C:\Users\agaur\source\repos\javaide\javaide\bin\Debug\javaide.exe
+C:\Users\agaur\source\repos\javaide\javaide\bin\Debug\javaide.pdb
+C:\Users\agaur\source\repos\javaide\javaide\obj\Debug\javaide.csproj.AssemblyReference.cache
+C:\Users\agaur\source\repos\javaide\javaide\obj\Debug\javaide.Form1.resources
+C:\Users\agaur\source\repos\javaide\javaide\obj\Debug\javaide.Properties.Resources.resources
+C:\Users\agaur\source\repos\javaide\javaide\obj\Debug\javaide.csproj.GenerateResource.cache
+C:\Users\agaur\source\repos\javaide\javaide\obj\Debug\javaide.csproj.CoreCompileInputs.cache
+C:\Users\agaur\source\repos\javaide\javaide\obj\Debug\javaide.exe
+C:\Users\agaur\source\repos\javaide\javaide\obj\Debug\javaide.pdb
+C:\Users\agaur\source\repos\javaide\javaide\bin\Debug\ScintillaNET.dll
+C:\Users\agaur\source\repos\javaide\javaide\bin\Debug\ScintillaNET.xml
+C:\Users\agaur\source\repos\javaide\javaide\obj\Debug\javaide.csproj.CopyComplete
