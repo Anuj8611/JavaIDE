@@ -2,6 +2,7 @@
 
 A lightweight, beginner-friendly Java IDE built using C#, Windows Forms, and ScintillaNET. The IDE supports dark mode, syntax highlighting, bracket auto-closing, and one-click compile/run functionality for `.java` files.
 
+
 ## ✨ Features
 
 - 🎨 **VS Code-inspired Dark Theme**  
@@ -10,6 +11,7 @@ A lightweight, beginner-friendly Java IDE built using C#, Windows Forms, and Sci
 - 🧠 **Real-time Error Feedback** in output panel  
 - 🧩 **Auto-closing Brackets & Quotes**  
 - 💾 **File Save & Load Support**
+
 
 ## 🖼 Preview
 
