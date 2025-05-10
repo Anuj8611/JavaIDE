@@ -26,37 +26,97 @@ namespace javaide
 
         private void TxtCode_CharAdded(object sender, CharAddedEventArgs e)
         {
-            char c = (char)e.Char;
+            int currentPos = txtCode.CurrentPosition;
+            int currentLine = txtCode.LineFromPosition(currentPos);
+            string currentLineText = txtCode.Lines[currentLine].Text;
 
-            string closingChar = null;
-
-            switch (c)
+            // Auto-indent on Enter
+            if (e.Char == '\n' && currentLine > 0)
             {
-                case '(':
-                    closingChar = ")";
-                    break;
-                case '{':
-                    closingChar = "}";
-                    break;
-                case '[':
-                    closingChar = "]";
-                    break;
-                case '"':
-                    closingChar = "\"";
-                    break;
-                case '\'':
-                    closingChar = "'";
-                    break;
+                string prevLine = txtCode.Lines[currentLine - 1].Text;
+                string indent = GetIndentation(prevLine);
+
+                // Add extra tab if previous line ends with {
+                if (prevLine.TrimEnd().EndsWith("{"))
+                {
+                    indent += "\t";
+                }
+
+                txtCode.InsertText(currentPos, indent);
             }
 
-
-            if (closingChar != null)
+            // Handle opening brace for block formatting
+            if (e.Char == '{')
             {
-                int currentPos = txtCode.CurrentPosition;
-                txtCode.InsertText(currentPos, closingChar);
-                txtCode.GotoPosition(currentPos); // Move cursor between the pair
+                txtCode.DeleteRange(currentPos - 1, 1);
+
+                string currentIndent = GetIndentation(currentLineText);
+                string innerIndent = currentIndent + "\t";
+
+                string block = "{\n" + innerIndent + "\n" + currentIndent + "}";
+
+                txtCode.InsertText(currentPos - 1, block);
+
+                // Move caret to the inner line (after the tab)
+                int newCaretPos = currentPos - 1 + 2 + innerIndent.Length;
+                txtCode.GotoPosition(newCaretPos);
+            }
+
+            // Handle method signature - When typing "()"
+            if (e.Char == ')')
+            {
+                string prevLine = txtCode.Lines[currentLine].Text;
+
+                // If the line ends with a method signature (e.g., `public static void main(String args[])`), insert the opening brace
+                if (prevLine.Contains(")") && !prevLine.Contains("{"))
+                {
+                    string currentIndent = GetIndentation(prevLine);
+                    string openBrace = currentIndent + "{\n";
+                    string innerIndent = currentIndent + "\t";
+
+                    // Insert the brace with a new line
+                    txtCode.InsertText(currentPos, openBrace + innerIndent + "\n" + currentIndent + "}");
+
+                    // Move the cursor inside the method body
+                    int newCaretPos = currentPos + openBrace.Length + innerIndent.Length;
+                    txtCode.GotoPosition(newCaretPos);
+                }
+            }
+
+            // Handle semicolon for correct indentation
+            if (e.Char == ';')
+            {
+                string prevLine = txtCode.Lines[currentLine].Text;
+
+                // If the current line ends with a semicolon, move to the next line with correct indentation
+                if (prevLine.TrimEnd().EndsWith(";"))
+                {
+                    string currentIndent = GetIndentation(prevLine);
+                    // Move caret to the next line, keeping the same indentation, but no new line insertion
+                    txtCode.InsertText(currentPos, "\n" + currentIndent);
+
+                    // After inserting, move the caret to the new position
+                    txtCode.GotoPosition(currentPos + currentIndent.Length + 1);
+                }
             }
         }
+
+
+
+
+        private string GetIndentation(string line)
+        {
+            StringBuilder indent = new StringBuilder();
+            foreach (char c in line)
+            {
+                if (c == ' ' || c == '\t')
+                    indent.Append(c);
+                else
+                    break;
+            }
+            return indent.ToString();
+        }
+
 
         private void InitializeEditorTheme()
         {
