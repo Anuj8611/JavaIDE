@@ -15,10 +15,10 @@ A lightweight, beginner-friendly Java IDE built using C#, Windows Forms, and Sci
 
 ## 🖼 Preview
 
-![screenshot](https://raw.githubusercontent.com/Anuj8611/JavaIDE/main/screenshots/2.png)
+![screenshot](https://raw.githubusercontent.com/Anuj8611/JavaIDE/main/screenshots/1.png)
 Compile First With the Green Button
 
-![screenshot](screenshots/Screenshot_(99).png)
+![screenshot](https://raw.githubusercontent.com/Anuj8611/JavaIDE/main/screenshots/2.png)
 Now Run the program by the Red Button
 
 ## 🚀 Getting Started
