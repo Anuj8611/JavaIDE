@@ -15,7 +15,11 @@ A lightweight, beginner-friendly Java IDE built using C#, Windows Forms, and Sci
 
 ## 🖼 Preview
 
-![screenshot](screenshots/java-ide-demo.png)
+![screenshot](screenshots/Screenshot(100).png)
+Compile First With the Green Button
+
+![screenshot](screenshots/Screenshot(99).png)
+Now Run the program by the Red Button
 
 ## 🚀 Getting Started
 
